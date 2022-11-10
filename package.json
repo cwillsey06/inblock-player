@@ -1,0 +1,34 @@
+{
+  "name": "hippoz-player",
+  "version": "1.0.0",
+  "description": "Minimal three button music player.",
+  "main": "public/script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cwillsey06/hippoz-player.git"
+  },
+  "keywords": [
+    "minimal",
+    "music",
+    "player",
+    "hippoz",
+    "gruvbox"
+  ],
+  "author": "cwillsey06",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/cwillsey06/hippoz-player/issues"
+  },
+  "homepage": "https://github.com/cwillsey06/hippoz-player#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "stylus": "^0.59.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "postcss-cli": "^10.0.0"
+  }
+}

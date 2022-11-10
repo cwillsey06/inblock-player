@@ -1,0 +1,14 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "removeComments": true,
+        "noImplicitAny": false,
+        "module": "commonjs",
+        "target": "es5",
+        "rootDir": "src",
+        "outDir": "public",
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
