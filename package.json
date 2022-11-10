@@ -1,5 +1,5 @@
 {
-  "name": "hippoz-player",
+  "name": "inblock-player",
   "version": "1.0.0",
   "description": "Minimal three button music player.",
   "main": "public/script.js",
@@ -8,21 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cwillsey06/hippoz-player.git"
+    "url": "git+https://github.com/cwillsey06/inblock-player.git"
   },
   "keywords": [
     "minimal",
     "music",
     "player",
-    "hippoz",
     "gruvbox"
   ],
   "author": "cwillsey06",
   "license": "LGPL-3.0",
   "bugs": {
-    "url": "https://github.com/cwillsey06/hippoz-player/issues"
+    "url": "https://github.com/cwillsey06/inblock-player/issues"
   },
-  "homepage": "https://github.com/cwillsey06/hippoz-player#readme",
+  "homepage": "https://github.com/cwillsey06/inblock-player#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.13",
     "stylus": "^0.59.0",

@@ -69,12 +69,12 @@ var Skip = document.getElementById("skip");
 var Playlist = [
     new Track("Laura Les", "Haunted", "https://0x0.st/oE7X.mp3")
 ];
-var HippozPlayer = new MediaPlayer();
-HippozPlayer.SetPlaylist(Playlist);
-HippozPlayer.GoToFirstTrack();
+var inblockPlayer = new MediaPlayer();
+inblockPlayer.SetPlaylist(Playlist);
+inblockPlayer.GoToFirstTrack();
 PlayPause.firstElementChild.className = "fa-solid fa-play";
 PlayPause.onclick = function () {
-    HippozPlayer.Toggle();
-    PlayPause.firstElementChild.className = HippozPlayer.Playing ? "fa-solid fa-pause" : "fa-solid fa-play";
+    inblockPlayer.Toggle();
+    PlayPause.firstElementChild.className = inblockPlayer.Playing ? "fa-solid fa-pause" : "fa-solid fa-play";
 };
-Skip.click = HippozPlayer.SkipTrack;
+Skip.click = inblockPlayer.SkipTrack;
