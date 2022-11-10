@@ -41,13 +41,20 @@ class MediaPlayer {
 
   SetTrack(track: Track) {
     this.CurrentTrack = track
+    this.AudioElement.src = this.CurrentTrack.File
+  }
+  GoToFirstTrack() {
+    this.TrackIndex = 0
+    this.SetTrack(this.Playlist[this.TrackIndex])
   }
   SkipTrack(direction?: 'previous' | 'next') {
     console.assert(this.Playlist != null, "Cannot skip track, no playlist available")
-    this.TrackIndex = (this.TrackIndex + 1) % this.Playlist.length
+    this.TrackIndex = ((this.TrackIndex + 1) % this.Playlist.length) - 1
+    this.SetTrack(this.Playlist[this.TrackIndex])
   }
-  SetPlaylist(playlist: [Track]) {
+  SetPlaylist(playlist: [ Track ]) {
     this.Playlist = playlist
+    this.TrackIndex = 0
   }
   AddToPlaylist(track: Track, index?: number) {
     if (index != null) {
@@ -70,7 +77,7 @@ class MediaPlayer {
   }
   Toggle() {
     this.Playing = !this.Playing;
-    this[this.Playing ? "Pause" : "Play"]()
+    this[this.Playing == true ? "Play" : "Pause"]()
   }
 }
 
@@ -84,10 +91,12 @@ const Playlist: [ Track ] = [
 
 const HippozPlayer = new MediaPlayer();
 HippozPlayer.SetPlaylist(Playlist);
+HippozPlayer.GoToFirstTrack();
+PlayPause.firstElementChild.className = "fa-solid fa-play";
 
-PlayPause.click = () => {
+PlayPause.onclick = () => {
   HippozPlayer.Toggle();
-  PlayPause.className = HippozPlayer.Playing ? "fa-solid fa-pause" : "fa-solid fa-play";
+  PlayPause.firstElementChild.className = HippozPlayer.Playing ? "fa-solid fa-pause" : "fa-solid fa-play";
 }
 
 Skip.click = HippozPlayer.SkipTrack

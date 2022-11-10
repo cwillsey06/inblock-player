@@ -23,13 +23,20 @@ var MediaPlayer = (function () {
     };
     MediaPlayer.prototype.SetTrack = function (track) {
         this.CurrentTrack = track;
+        this.AudioElement.src = this.CurrentTrack.File;
+    };
+    MediaPlayer.prototype.GoToFirstTrack = function () {
+        this.TrackIndex = 0;
+        this.SetTrack(this.Playlist[this.TrackIndex]);
     };
     MediaPlayer.prototype.SkipTrack = function (direction) {
         console.assert(this.Playlist != null, "Cannot skip track, no playlist available");
-        this.TrackIndex = (this.TrackIndex + 1) % this.Playlist.length;
+        this.TrackIndex = ((this.TrackIndex + 1) % this.Playlist.length) - 1;
+        this.SetTrack(this.Playlist[this.TrackIndex]);
     };
     MediaPlayer.prototype.SetPlaylist = function (playlist) {
         this.Playlist = playlist;
+        this.TrackIndex = 0;
     };
     MediaPlayer.prototype.AddToPlaylist = function (track, index) {
         if (index != null) {
@@ -52,7 +59,7 @@ var MediaPlayer = (function () {
     };
     MediaPlayer.prototype.Toggle = function () {
         this.Playing = !this.Playing;
-        this[this.Playing ? "Pause" : "Play"]();
+        this[this.Playing == true ? "Play" : "Pause"]();
     };
     return MediaPlayer;
 }());
@@ -64,8 +71,10 @@ var Playlist = [
 ];
 var HippozPlayer = new MediaPlayer();
 HippozPlayer.SetPlaylist(Playlist);
-PlayPause.click = function () {
+HippozPlayer.GoToFirstTrack();
+PlayPause.firstElementChild.className = "fa-solid fa-play";
+PlayPause.onclick = function () {
     HippozPlayer.Toggle();
-    PlayPause.className = HippozPlayer.Playing ? "fa-solid fa-pause" : "fa-solid fa-play";
+    PlayPause.firstElementChild.className = HippozPlayer.Playing ? "fa-solid fa-pause" : "fa-solid fa-play";
 };
 Skip.click = HippozPlayer.SkipTrack;
