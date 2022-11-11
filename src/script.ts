@@ -52,7 +52,7 @@ class MediaPlayer {
     this.TrackIndex = ((this.TrackIndex + 1) % this.Playlist.length) - 1
     this.SetTrack(this.Playlist[this.TrackIndex])
   }
-  SetPlaylist(playlist: [ Track ]) {
+  SetPlaylist(playlist: [Track]) {
     this.Playlist = playlist
     this.TrackIndex = 0
   }
@@ -81,11 +81,11 @@ class MediaPlayer {
   }
 }
 
-const ProgressBar = document.getElementById("progress");
+const ProgressBar = document.getElementById("progress").firstElementChild as HTMLSpanElement;
 const PlayPause = document.getElementById("pause")
 const Skip = document.getElementById("skip");
 
-const Playlist: [ Track ] = [
+const Playlist: [Track] = [
   new Track("Laura Les", "Haunted", "https://0x0.st/oE7X.mp3")
 ]
 
@@ -99,4 +99,12 @@ PlayPause.onclick = () => {
   PlayPause.firstElementChild.className = inblockPlayer.Playing ? "fa-solid fa-pause" : "fa-solid fa-play";
 }
 
+function setProgressBarWidth() {
+  const percentage = (inblockPlayer.GetTimePosition() / inblockPlayer.GetLength()) * 10;
+  ProgressBar.style.width = `${percentage}%`;
+
+  let t = setTimeout(setProgressBarWidth, 1000);
+}
+
 Skip.click = inblockPlayer.SkipTrack
+setProgressBarWidth();
