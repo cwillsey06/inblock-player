@@ -2,7 +2,7 @@
 
 function main() {
     # install dependencies
-    npm i postcss-cli autoprefixer stylus typescript
+    # npm i postcss-cli autoprefixer stylus typescript
 
     # build
     npx tsc
